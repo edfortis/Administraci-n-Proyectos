@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/Bay2.0/';
+$config['base_url']	= 'http://localhost/ropaventa/Administraci-n-Proyectos/';
 
 /*
 |--------------------------------------------------------------------------

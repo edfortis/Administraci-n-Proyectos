@@ -40,15 +40,13 @@ $config['phpass_hash_strength'] = 8;
 |--------------------------------------------------------------------------
 */
 $config['allow_registration'] = TRUE;
-$config['captcha_registration'] = FALSE;
-$config['email_activation'] = FALSE;
 $config['email_activation_expire'] = 60*60*24*2;
 $config['email_account_details'] = TRUE;
 $config['use_username'] = TRUE;
 
 $config['username_min_length'] = 4;
 $config['username_max_length'] = 20;
-$config['password_min_length'] = 4;
+$config['password_min_length'] = 3;
 $config['password_max_length'] = 20;
 
 /*
@@ -73,7 +71,7 @@ $config['login_by_email'] = TRUE;
 $config['login_record_ip'] = TRUE;
 $config['login_record_time'] = TRUE;
 $config['login_count_attempts'] = TRUE;
-$config['login_max_attempts'] = 5;
+$config['login_max_attempts'] = 10;
 $config['login_attempt_expire'] = 60*60*24;
 
 /*

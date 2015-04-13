@@ -5,7 +5,11 @@
         public function __construct()
         {
             parent::__construct();
-            $this->load->model('items_model');
+            
+            $this->load->helper(array('form', 'url'));
+            $this->load->library('form_validation');
+            $this->load->model('Modelo_admin');
+            $this->load->library('pagination');
         }
        public function cargar($page = 'inicio')
        {
@@ -24,6 +28,61 @@
            $this->load->view($page,$data);
            $this->load->view('Plantilla/footer');
           // }
+       }
+       public function admin($page = 0){
+           
+           if (!$this->tank_auth->is_logged_in()){
+               redirect('/auth/login/');
+           }else{
+                   
+               //podemos otorgar acceso al admin
+               $data['title'] = 'Administrador';
+               //código que inicia al paginador
+               if($this->uri->segment(4)){
+                       $elemt = ($this->uri->segment(4)) ;
+                }else{
+                       $elemt = 0;
+                }
+                
+               //case que controla que tabla mostrar
+               if(isset($_POST['tabla']))
+               {
+                $tabla = $_POST['tabla'];    
+               }
+               else 
+               {
+                $tabla = 1;    
+               }
+               
+               switch ($tabla) 
+               {
+                   case 1:
+                       $vista = 'producto_vista';
+                       $data["links"] = $this->paginacion($page,$vista);
+                       $limit = $data['links']['per_page'];
+                       $start = $elemt ;
+                       $data["items"] = $this->Modelo_admin->fetch_data($limit,$start,$vista);
+                       $data['tabla'] = $tabla;
+                       $this->load->view('Plantilla/headeradmin',$data);
+                       $this->load->view('admin-producto',$data);
+                       $this->load->view('Plantilla/footeradmin');
+                               
+                       break;
+                   case 2:
+                       
+                       break;
+                   case 3:
+                       
+                       break;
+                   default:
+                       
+                       break;
+               }
+               
+               //crear las consultas por casos en el switch
+               //y cargarlo al $data para crear las tablas 
+               
+           }
        }
        public function create($id = 0)
         {
@@ -70,6 +129,45 @@
                show_404();
            }
                 
+       }
+        
+       function paginacion($page,$tabla)
+       {
+            
+            $config = array();
+            $config["base_url"] = base_url() . "sitio/admin/$page";
+            $total_row = $this->Modelo_admin->record_count($tabla);
+            
+            $config["total_rows"] = $total_row;
+            $config["per_page"] = 10;
+            $config['use_page_numbers'] = TRUE;
+            $choice = round($config["total_rows"] / $config["per_page"]);
+            $config['num_links'] = $choice; 
+            $config['cur_tag_open'] = '<li class="active"><a href="#">';
+            $config['cur_tag_close'] = '</a></li>';
+            $config['uri_segment'] = '4';
+            $config['num_tag_open'] = '<li>';
+            $config['num_tag_close'] = '</li>';
+            $config['last_link'] = FALSE;
+            $config['first_link'] = FALSE;
+            $config['next_link'] = '&raquo;';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['prev_link'] = '&laquo;';
+            $config['prev_tag_open'] = '<li>';
+            $config['prev_tag_close'] = '</li>';
+            
+            
+            
+            
+            
+            
+            $this->pagination->initialize($config);
+            $str_links = $this->pagination->create_links();
+            $data["per_page"] = $config["per_page"];
+            $data["links"] = explode('&nbsp;',$str_links );
+            
+            return $data;
        }
     }
 ?>
