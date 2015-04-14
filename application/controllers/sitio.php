@@ -22,7 +22,7 @@
            /* if (!$this->tank_auth->is_logged_in()) {
                 redirect('/auth/login/');
             } else {*/
-           $data['notas'] = $this->items_model->get_news();
+           $data['notas'] = $this->Modelo_admin->get_item(FALSE,'producto');
            $data['title']=  ucfirst($page);
            $this->load->view('Plantilla/header',$data);   
            $this->load->view($page,$data);
@@ -63,6 +63,7 @@
                        $start = $elemt ;
                        $data["items"] = $this->Modelo_admin->fetch_data($limit,$start,$vista);
                        $data['tabla'] = $tabla;
+                      
                        $this->load->view('Plantilla/headeradmin',$data);
                        $this->load->view('admin-producto',$data);
                        $this->load->view('Plantilla/footeradmin');

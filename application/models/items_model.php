@@ -10,11 +10,11 @@ class Items_model extends CI_Model {
     {
         if ($slug === FALSE)
         {
-            $query = $this->db->get('nota');
+            $query = $this->db->get('producto_vista');
             return $query->result_array();
         }
     
-        $query = $this->db->get_where('nota', array('id_nota' => $slug));
+        $query = $this->db->get_where('producto_vista', array('id_nota' => $slug));
         return $query->row_array();
     }
     

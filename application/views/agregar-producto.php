@@ -11,8 +11,12 @@
                 <?php var_dump($post)?>
                 <p>el archivo file</p>
                 <?php var_dump($file)?>
+                <p>Errores en la imagen: </p>
+                <br />
+                <?php var_dump($error)?>
             </div>
             <div class="col-md-4">
+                
               <?php echo validation_errors();?>
               <?php echo form_open_multipart("procesar/agregar_producto");?>
               <div class="form-group">
@@ -21,8 +25,8 @@
                 
               </div>
               <div class="form-group">
-                <label for="img">Imagen</label>
-                <input type="file" class="btn btn-primary" name="img">
+                <label for="file">Imagen</label>
+                <input type="file" class="btn btn-primary" name="file">
                 <p class="help-block">Busca una imagen en tu disco</p>
               </div>
               <div class="form-group">
@@ -38,6 +42,14 @@
                 <select name="idcolor" class="form-control">
                     <?php foreach ($color as $colores){ ?>
                         <option value="<?=$colores['idcolor']?>"><?=$colores['nombre_color']?></option>
+                    <?php }?>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="idcolor">Tipo</label>
+                <select name="idtipo" class="form-control">
+                    <?php foreach ($tipo as $tipos){ ?>
+                        <option value="<?=$tipos['idtipo']?>"><?=$tipos['nombre_tipo']?></option>
                     <?php }?>
                 </select>
               </div>

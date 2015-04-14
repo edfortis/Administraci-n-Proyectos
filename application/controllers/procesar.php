@@ -18,15 +18,6 @@ ini_set('display_errors', 1);
         public function agregar_producto($id = FALSE)
         {
                 
-            //configuración utilerias para imagenes
-            $config['upload_path'] = './img/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = '0';
-            $config['max_width']  = '0';
-            $config['max_height']  = '0';
-            //carga de libreria imagenes
-            $this->load->library('upload', $config);
-            
             //carga de librerias
             $this->load->helper('form');
             $this->load->helper('html');
@@ -38,25 +29,25 @@ ini_set('display_errors', 1);
             $this->form_validation->set_rules('nombre_producto', 'Nombre Producto','required',$required );
             $this->form_validation->set_rules('idtalla', 'Talla', 'required',$required);
             $this->form_validation->set_rules('idcolor', 'Color', 'required',$required);
+            $this->form_validation->set_rules('idtipo', 'Tipo', 'required',$required);
             $this->form_validation->set_rules('precio', 'Precio', 'required',$required);
             $this->form_validation->set_rules('cantidad', 'Cantidad', 'required',$required);
             //$this->form_validation->set_rules('img','La imagen','required',$required);
             
+            //funcion para subir la imagen
+            $imgurl = $this->db->insert_id();
+            $imgurl +=1;
+            $bandera = $this->do_upload($imgurl);
+            
             //si paso la validación
-            if ($this->form_validation->run() == FALSE)
+            if ($this->form_validation->run() == FALSE and $bandera['error'] != '' )
             {
-                //mandar error en caso de que exista error en la carga de la imagen
-                if(! $this->upload->do_upload())
-                {
-                    $data['error_img'] =  $this->upload->display_errors();
-                    
-                       
-                }
-                
                 
                 //cargar datos para los selects
                 $data['talla']= $this->Modelo_admin->get_item(FALSE,'talla');
                 $data['color']= $this->Modelo_admin->get_item(FALSE,'color');
+                $data['tipo'] = $this->Modelo_admin->get_item(FALSE,'tipo');
+                $data['error'] = $bandera;
                 $data['post'] = $_POST;
                 $data['file'] = $_FILES;
                 //cargar el formulario
@@ -66,15 +57,32 @@ ini_set('display_errors', 1);
             }
             else
             {
-                $data = array('procesar/agregar_producto' => $this->upload->data());
+                
+                
                 $data = array(
                         'nombre_producto' => $this->input->post('nombre_producto'),
                         'precio' => $this->input->post('precio'),
                         'cantidad' => $this->input->post('cantidad'),
                         'color_idcolor' => $this->input->post('idcolor'),
-                        'talla_idtalla' => $this->input->post('idtalla')
+                        'talla_idtalla' => $this->input->post('idtalla'),
+                        'tipo_idtipo' => $this->input->post('idtipo'),
+                        'url' => $imgurl
                         );
-                var_dump($data);  
+                //
+                $resize = array(
+                            'marker' => '_min',
+                            'width' => 431,
+                            'height' => 278
+                );
+                $resize2 = array(
+                            'marker' => '_full',
+                            'width' => 700,
+                            'height' => 800
+                );
+                
+                $this->thumb($bandera,$resize);
+                $this->thumb($bandera,$resize2);
+                //var_dump($bandera); 
                 $this->Modelo_admin->set_data('producto',$data);
                 
                 redirect('sitio/admin');
@@ -84,15 +92,42 @@ ini_set('display_errors', 1);
            
             
         }
+
+        //$name nombre que se la dara al archivo en el servidor
+        public function do_upload($name)
+        {
+                $config['upload_path']          = './img/';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 0;
+                $config['max_width']            = 0;
+                $config['max_height']           = 0;
+                $config['file_name']            = $name;
+
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('file'))
+                {
+                        $data = array('error' => $this->upload->display_errors());
+
+                        return $data;
+                }
+                else
+                {
+                        $data = array('upload_data' => $this->upload->data());
+
+                        return $data;
+                }
+        }
  
-        function thumb($data)
+        function thumb($data,$config)
         {
             $config['image_library'] = 'gd2';
-            $config['source_image'] =$data['full_path'];
+            $config['source_image'] =$data['upload_data']['full_path'];
             $config['create_thumb'] = TRUE;
             $config['maintain_ratio'] = TRUE;
-            $config['width'] = 360;
-            $config['height'] = 206;
+            $config['thumb_marker'] = $config['marker'];
+            $config['width'] = $config['width'];
+            $config['height'] = $config['height'];
             $this->load->library('image_lib', $config);
             $this->image_lib->resize();
         } 
