@@ -14,7 +14,8 @@
                     <td><?=$item->nombre_tipo?></td>
                     <td><?=$item->cantidad?></td>
                     <td><?=$item->precio?></td>
-                    <td><a class="btn btn-default" href="#" role="button">borrar</a></td>
+                    <td><a href="<?php echo base_url();?>procesar/agregar_producto/<?=$item->idproducto?>" title="Modificar" ><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></a>
+                    <a href="<?php echo base_url();?>procesar/borrar_producto/<?=$item->idproducto?>" title="Borrar" ><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a></td>
                 </tr>
             <?php } ?>
             </table>
