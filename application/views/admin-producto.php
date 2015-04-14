@@ -8,7 +8,7 @@
             <tr><th>Nombre</th><th>Talla</th><th>Cantidad</th><th>Precio</th><th>Acciones</th></tr>
             <?php foreach ($items as $item){ ?>
                 <tr><td><?=$item->nombre_producto?></td><td><?=$item->numero_talla?></td><td><?=$item->cantidad?></td>
-                    <td><?=$item->precio?></td>
+                    <td><?=$item->precio?></td><td><a class="btn btn-default" href="#" role="button">borrar</a></td>
                 </tr>
             <?php } ?>
             </table>
