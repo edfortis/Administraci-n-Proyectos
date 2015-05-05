@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/horarios/';
+$config['base_url'] = 'http://localhost/ropaventa/Administraci-n-Proyectos/horarios/';
 
 /*
 |--------------------------------------------------------------------------
