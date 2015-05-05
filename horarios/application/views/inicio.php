@@ -9,6 +9,7 @@
                 </h1>
             </div>
             <div class="col-md-4">
+                
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4><i class="fa fa-fw fa-check"></i> Bootstrap v3.2.0</h4>

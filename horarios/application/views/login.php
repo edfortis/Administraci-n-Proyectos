@@ -28,6 +28,7 @@
                             <input type="password" class="form-control" name="pass" />
                         </div>
                         <button type="submit" class="btn btn-default">Iniciar</button>
+                        <a href="<?php echo base_url();?>CUsuario"><button type="button" class="btn btn-default">Registrarme</button></a>
                     </div>
                 </div>
             </div>
