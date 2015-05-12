@@ -9,6 +9,26 @@
 .container-login label{
 	color:#093;
 }
+.label-uv{
+	color:#093;
+}
+.linea-gradada
+{
+    background: linear-gradient(to right, #069 30%, #FFF 100%) repeat scroll 0% 0% transparent;
+    
+    width: 60%;
+    
+}
+.navbar li a{
+	color:#4A4545;
+}
+.navbar a{
+	color:#EBF0F5;
+}
+.navbar a:hover{
+	color:#FFFFFF;
+}
+
 .login-cabezera
 {
 	background:#21AD22;
@@ -19,4 +39,10 @@
 .margen{
 	margin:50px 0 0 0 !important;
 	
+}
+
+.nav > li > a:focus, .nav > li > a:hover
+{
+	text-decoration: none;
+	background-color: #9DC4D7;
 }

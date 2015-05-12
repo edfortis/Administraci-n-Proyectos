@@ -7,9 +7,9 @@
             parent::__construct();
             
             $this->load->helper(array('form', 'url'));
-            $this->load->library('form_validation');
+            $this->load->library(array('form_validation','cart','pagination'));
             $this->load->model('Modelo_admin');
-            $this->load->library('pagination');
+           
             $this->load->library('cart');
         }
        public function producto($id)

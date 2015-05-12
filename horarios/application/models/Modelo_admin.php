@@ -41,6 +41,7 @@ class Modelo_admin extends CI_Model {
             return $query->result_array();
         }
         $query = $this->db->get_where($tabla['tabla'],array($tabla['idcolum'] => $tabla['id']));
+        
         return $query->row_array();    
     }
     
@@ -59,9 +60,9 @@ class Modelo_admin extends CI_Model {
        $this->db->where($tabla['idcolum'],$tabla['id']);
        $this->db->update($tabla['nombre'],$data); 
      }
-    function delete($id){
+    function entry_delete($tabla){
      
-      $this->db->delete('img', array('id' => $id));
+      $this->db->delete($tabla['nombre'], array($tabla['idcolum'] => $tabla['id']));
     }
     // Count all record of table "contact_info" in database.
     public function record_count($table = 'img') 

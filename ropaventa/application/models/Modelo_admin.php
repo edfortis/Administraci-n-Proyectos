@@ -59,9 +59,10 @@ class Modelo_admin extends CI_Model {
        $this->db->where($tabla['idcolum'],$tabla['id']);
        $this->db->update($tabla['nombre'],$data); 
      }
-    function delete($id){
+    //eliminar tabla
+    function entry_delete($tabla){
      
-      $this->db->delete('img', array('id' => $id));
+      $this->db->delete($tabla['nombre'], array($tabla['idcolum'] => $tabla['id']));
     }
     // Count all record of table "contact_info" in database.
     public function record_count($table = 'img') 

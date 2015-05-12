@@ -50,7 +50,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="about.html">Catálogos</a>
+                        <a href="<?php echo base_url();?>catalogos">Catálogos</a>
                     </li>
                     <li>
                         <a href="services.html">Services</a>
@@ -118,3 +118,41 @@
         </div>
         <!-- /.container -->
     </nav>
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <br /><br />
+            <div class="col-md-4">
+           
+            <?php echo validation_errors();?>
+            <?php 
+                
+                $attributes = array('class' => '');
+            ?>
+            <?php echo form_open("Catalogos",$attributes);?>
+              <div class="form-group">
+                <label for="tabla">Seleccionar Tabla a administrar</label>
+                <select class="form-control" name="tabla">
+                    <option value="1" <?php if($tabla == 1){echo ' selected';}?> >Usuarios</option>
+                    <option value="2" <?php if($tabla == 2){echo ' selected';}?> >Carreras</option>
+                    <option value="3" <?php if($tabla == 3){echo ' selected';}?> >Materias</option>
+                </select>  
+              </div>
+            <button type="submit" class="btn btn-default">Cargar</button>
+            </form>
+            </div>
+        </div>
+    </div>
+    </div>
+     <div class="container">
+
+        <!-- Marketing Icons Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Catálogos
+                </h1>
+            </div>
+            
+            
+        </div>
