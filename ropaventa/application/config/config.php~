@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/ropaventa/Administraci-n-Proyectos/ropaventa';
+$config['base_url']	= 'http://localhost/ropaventa/Administraci-n-Proyectos/';
 
 /*
 |--------------------------------------------------------------------------
