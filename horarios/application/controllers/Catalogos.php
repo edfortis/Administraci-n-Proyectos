@@ -103,7 +103,7 @@ class Catalogos extends CI_Controller {
             $total_row = $this->Modelo_admin->record_count($tabla);
             
             $config["total_rows"] = $total_row;
-            $config["per_page"] = 10;
+            $config["per_page"] = 100;
             $config['use_page_numbers'] = TRUE;
             $choice = round($config["total_rows"] / $config["per_page"]);
             $config['num_links'] = $choice; 

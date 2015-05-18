@@ -14,7 +14,7 @@ class CLicenciatura extends CI_Controller {
             
     }
 
-    public function index()
+    public function index($id = FALSE)
     {
            
        if(!file_exists(APPPATH.'/views/form_licenciatura.php'))
@@ -30,16 +30,35 @@ class CLicenciatura extends CI_Controller {
        {
            $data['title']=  ucfirst('Agregar Licenciatura');
            $this->load->view('plantilla/header',$data);
-           $this->load->view('form_licenciatura.php');
+
+           //if para modificar
+           if($id != false)
+           {
+                $tabla = array('tabla' => 'Licenciaturas','idcolum' => 'idLicenciatura','id' => $id);
+                $data = $this->Modelo_admin->get_row($tabla);
+
+           }
+           $this->load->view('form_licenciatura.php',$data);
            $this->load->view('plantilla/footer');
        }else
        {
-           //agregar
-           $this->agregar_licenciatura();
-       }  
+        //if de modificacion
+           if($id != False)
+           {
+               //Agregar
+               $this->modificar_licenciatura($id); 
+               
+           }
+           else
+           {
+               //modificar
+               $this->agregar_licenciatura(); 
+               
+           }  
           
     }
-    
+  }
+    //agregar
     public function agregar_licenciatura()
     {
         $data = array('nombre' => $this->input->post('nombre'),
@@ -56,33 +75,40 @@ class CLicenciatura extends CI_Controller {
     {
         if($id == FALSE)
         {
-            redirect('catalogos');
+        $array = array('tabla'=> 2);
+        $this->session->set_flashdata('tabla',2);
+        redirect('Catalogos');
         }
         var_dump($post);
-        $data = array('nickname' => $this->input->post('nickname'),
-            'contrasena' => $this->input->post('contrasena'),
-            'perfil' => $this->input->post('perfil'));
+        $data = array('nombre' => $this->input->post('nombre'),
+            'creditosTotal' => $this->input->post('creditosTotal'));
         $tabla = array(
-            'idcolum' => 'idUsuario',
+            'idcolum' => 'idLicenciatura',
             'id' => $id,
-            'nombre' => 'Usuario' 
+            'nombre' => 'Licenciaturas' 
         );
         $this->Modelo_admin->entry_update($tabla,$data);
-        redirect('catalogos');
+        $array = array('tabla'=> 2);
+        $this->session->set_flashdata('tabla',2);
+        redirect('Catalogos'); 
         
     }
     //eliminar
     public function eliminar_licenciatura($id = FALSE){
         if($id == FALSE)
-        {
-            redirect('catalogos');
+        {        
+        $array = array('tabla'=> 2);
+        $this->session->set_flashdata('tabla',2);
+        redirect('Catalogos'); 
         }
-        $tabla = array('idcolum'=>'idUsuario',
+        $tabla = array('idcolum'=>'idLicenciatura',
             'id' => $id,
-            'nombre' => 'Usuario');
+            'nombre' => 'Licenciaturas');
         
         $this->Modelo_admin->entry_delete($tabla);
-        redirect('catalogos');
+        $array = array('tabla'=> 2);
+        $this->session->set_flashdata('tabla',2);
+        redirect('Catalogos'); 
     }
     
     

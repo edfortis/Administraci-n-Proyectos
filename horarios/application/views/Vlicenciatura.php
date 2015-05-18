@@ -15,8 +15,9 @@
                                     
                   <td>
                     
-                    <a href="<?php echo base_url();?>CUsuario/index/<?=$item->idLicenciatura?>" title="Modificar" ><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></a>
-                    <a href="<?php echo base_url();?>CUsuario/eliminar_usuario/<?=$item->idLicenciatura?>" title="Borrar" onclick="return confirm('estas seguro?')"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
+                    <a href="<?php echo base_url();?>CLicenciatura/index/<?=$item->idLicenciatura?>" title="Modificar" ><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></a>
+                    <a href="<?php echo base_url();?>CLicenciatura/eliminar_licenciatura/<?=$item->idLicenciatura?>" title="Borrar" onclick="return confirm('estas seguro?')"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
+                    
                   </td>
                 </tr>
             <?php } ?>

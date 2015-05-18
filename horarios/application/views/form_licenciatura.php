@@ -17,7 +17,9 @@
                     <input class="form-control" type="text" maxlength="3" name="creditosTotal" />
                 </div>
                 <button type="submit" class="btn btn-default">Guardar</button>
+
             </div>
+                <button type="submit" class="btn btn-default">Cancelar</button>
         </div>
     </div>
 </div>
