@@ -35,7 +35,10 @@
                         <option value="2" <?php if(isset($perfil)){?> selected <?php } ?> >Administrador</option>
                     </select>
                 </div>
+                <input type="hidden" name="tabla" value="2" />
                 <button type="submit" class="btn btn-default">Guardar</button>
+                
+                </form>
             </div>
         </div>
     </div>

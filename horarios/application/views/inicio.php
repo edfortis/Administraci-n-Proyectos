@@ -2,123 +2,100 @@
     <div class="container">
 
         <!-- Marketing Icons Section -->
+        
+        <!-- /.row -->
+
+        <!-- form section -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">
-                    Welcome to Modern Business
-                </h1>
-            </div>
-            <div class="col-md-4">
+              
+               <div class="col-md-3 col-sm-4">
+               <?php echo form_open('sitio/cargar/inicio');?>
+               <div class="form-group label-uv">
+                  <label for="carrera">Carrera</label>
+                  <select class="form-control" name="carrera">
+                  <?php foreach ($items as $item){ ?>
+                    <option value="<?=$item->idLicenciatura?>"><?=$item->nombre?></option>     
+                  <?php }?>
+                  </select> 
+               </div>
+               </div>
+               <div class="col-md-3 col-sm-4">
+                 <div class="form-group label-uv">
+                  <label for="carrera">Materia</label>
+                  <select class="form-control" name="carrera">
+                  <?php foreach ($items as $item){ ?>
+                    <option value="<?=$item->idExperiencia?>"><?=$item->nombre?></option>     
+                  <?php }?>
+                  </select> 
+               </div>    
+               </div>
+               </form>
+            
+            <div class="col-md-3 col-sm-4">
                 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i> Bootstrap v3.2.0</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
+                    <br />
+                    <button type="button" class="btn btn-default" id="btn-guardar"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+                    <button type="button" class="btn btn-default" id="btn-revert" ><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button>
+                    
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Free &amp; Open Source</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
-            </div>
+         </div>
         </div>
-        <!-- /.row -->
-
-        <!-- Portfolio Section -->
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">Portfolio Heading</h2>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Features Section -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Modern Business Features</h2>
-            </div>
-            <div class="col-md-6">
-                <p>The Modern Business template by Start Bootstrap includes:</p>
-                <ul>
-                    <li><strong>Bootstrap v3.2.0</strong>
-                    </li>
-                    <li>jQuery v1.11.0</li>
-                    <li>Font Awesome v4.1.0</li>
-                    <li>Working PHP contact form with validation</li>
-                    <li>Unstyled page elements for easy customization</li>
-                    <li>17 HTML pages</li>
-                </ul>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
-            </div>
-            <div class="col-md-6">
-                <img class="img-responsive" src="http://placehold.it/700x450" alt="">
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Call to Action Section -->
-        <div class="well">
-            <div class="row">
-                <div class="col-md-8">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+                <div class="col-md-3">
+                    <div class="panel  ">
+                        <div class="panel-heading radio-cabecera cabecera-panel">Horas disponibles</div>
+                        <br />
+                        <div class="caja-tiempo color-verde draggable" id="draggable" ><span class="glyphicon glyphicon-time" aria-hidden="true"></span></div>
+                        <div class="caja-tiempo color-verde draggable" id="draggable" ><span class="glyphicon glyphicon-time" aria-hidden="true"></span></div>
+                        <div class="caja-tiempo color-verde draggable" id="draggable" ><span class="glyphicon glyphicon-time" aria-hidden="true"></span></div>
+                        <div class="caja-tiempo color-verde draggable" id="draggable" ><span class="glyphicon glyphicon-time" aria-hidden="true"></span></div>
+                        <div class="caja-tiempo color-verde draggable" id="draggable" ><span class="glyphicon glyphicon-time" aria-hidden="true"></span></div>
+                        <div class="caja-tiempo color-verde draggable" id="draggable" ><span class="glyphicon glyphicon-time" aria-hidden="true"></span></div>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
+                <div class="col-md-9">
+                    <div id="tabs">
+                      <ul class="cabecera-panel">
+                        <li><a class="label-uv" href="#tabs-1">Salon 1</a></li>
+                        <li><a class="label-uv" href="ajax/content1.html">Salon 2</a></li>
+                        <li><a class="label-uv" href="ajax/content2.html">Salon 3</a></li>
+                        <li><a class="label-uv" href="ajax/content3-slow.php">Salon 4</a></li>
+                        <li><a class="label-uv" href="ajax/content4-broken.php">Salon 5</a></li>
+                      </ul>
+                      <div id="tabs-1">
+                        <div class="panel panel-default">
+                              <!-- Default panel contents -->
+                              <div class="panel-heading">Arrastra tus horas aqui!</div>
+                            
+                              <!-- Table -->
+                              <table class="table table-condensed table-bordered">
+                                <tr><th>Horario</th><th>Lunes</th><th>Martes</th><th>Miercoles</th><th>Jueves</th><th>Viernes</th></tr>
+                                <tr><td>7:00-7:59</td><td class="fijarse" id="L1"></td><td class="fijarse" id="M1"></td><td class="fijarse" id="X1"></td><td class="fijarse" id="J1"></td><td class="fijarse" id="V1"></td></tr>
+                                <tr><td>8:00-8:59</td><td class="fijarse" id="L2"></td><td class="fijarse" id="M2"></td><td class="fijarse" id="X2"></td><td class="fijarse" id="J2"></td><td class="fijarse" id="V2"></td></tr>
+                                <tr><td>9:00-9:59</td><td class="fijarse" id="L3"></td><td class="fijarse" id="M3"></td><td class="fijarse" id="X3"></td><td class="fijarse" id="J3"></td><td class="fijarse" id="V3"></td></tr>
+                                <tr><td>10:00-10:59</td><td class="fijarse" id="L4"></td><td class="fijarse" id="M4"></td><td class="fijarse" id="X4"></td><td class="fijarse" id="J4"></td><td class="fijarse" id="V4"></td></tr>
+                                <tr><td>11:00-11:59</td><td class="fijarse" id="L5"></td><td class="fijarse" id="M5"></td><td class="fijarse" id="X5"></td><td class="fijarse" id="J5"></td><td class="fijarse" id="V5"></td></tr>
+                                <tr><td>12:00-12:59</td><td class="fijarse" id="L6"></td><td class="fijarse" id="M6"></td><td class="fijarse" id="X6"></td><td class="fijarse" id="J6"></td><td class="fijarse" id="V6"></td></tr>
+                                <tr><td>13:00-13:59</td><td class="fijarse" id="L7"></td><td class="fijarse" id="M7"></td><td class="fijarse" id="X7"></td><td class="fijarse" id="J7"></td><td class="fijarse" id="V7"></td></tr>
+                                <tr><td>14:00-14:59</td><td class="fijarse" id="L8"></td><td class="fijarse" id="M8"></td><td class="fijarse" id="X8"></td><td class="fijarse" id="J8"></td><td class="fijarse" id="V8"></td></tr>
+                                <tr><td>15:00-15:59</td><td class="fijarse" id="L9"></td><td class="fijarse" id="M9"></td><td class="fijarse" id="X9"></td><td class="fijarse" id="J9"></td><td class="fijarse" id="V9"></td></tr>
+                                <tr><td>16:00-16:59</td><td class="fijarse" id="L10"></td><td class="fijarse" id="M10"></td><td class="fijarse" id="X10"></td><td class="fijarse" id="J10"></td><td class="fijarse" id="V10"></td></tr>
+                                <tr><td>17:00-17:59</td><td class="fijarse" id="L11"></td><td class="fijarse" id="M11"></td><td class="fijarse" id="X11"></td><td class="fijarse" id="J11"></td><td class="fijarse" id="V11"></td></tr>
+                                <tr><td>18:00-18:59</td><td class="fijarse" id="L12"></td><td class="fijarse" id="M12"></td><td class="fijarse" id="X12"></td><td class="fijarse" id="J12"></td><td class="fijarse" id="V12"></td></tr>
+                                <tr><td>19:00-19:59</td><td class="fijarse" id="L12"></td><td class="fijarse" id="M13"></td><td class="fijarse" id="X13"></td><td class="fijarse" id="J13"></td><td class="fijarse" id="V13"></td></tr>
+                                <tr><td>20:00-20:59</td><td class="fijarse" id="L14"></td><td class="fijarse" id="M14"></td><td class="fijarse" id="X14"></td><td class="fijarseJ" id="J14"></td><td class="fijarse" id="v14"></td></tr>
+                                
+                                
+                              </table>
+                        </div>
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>
+        
+        
 
         <hr>

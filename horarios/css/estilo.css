@@ -10,7 +10,7 @@
 	color:#093;
 }
 .label-uv{
-	color:#093;
+	color:#093 !important;
 }
 .linea-gradada
 {
@@ -28,6 +28,19 @@
 .navbar a:hover{
 	color:#FFFFFF;
 }
+.cabecera-panel{
+	background:#3DB1B1 !important;
+	border-color:#3DB1B1 !important;
+}
+
+.radio-cabecera{
+	
+	border-bottom: 1px solid transparent;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	color:#FFF;
+	
+}
 
 .login-cabezera
 {
@@ -39,6 +52,22 @@
 .margen{
 	margin:50px 0 0 0 !important;
 	
+}
+.color-verde{
+	background:#693;
+}
+.caja-tiempo span{
+	font-size:23px;
+}
+.caja-tiempo{
+	width:60px;
+	height:30px;
+	color:#fff;
+	padding: 3px 19px;
+	margin:5px 12px;
+	border-radius: 3px;
+	float:left;
+	z-index:1;
 }
 
 .nav > li > a:focus, .nav > li > a:hover

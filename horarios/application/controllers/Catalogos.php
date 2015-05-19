@@ -63,16 +63,14 @@ class Catalogos extends CI_Controller {
                                               
         break;
         case 2:
-          $data['tabla'] = $tabla;
-          $data['title']=  ucfirst('Usuario');
-           
-          $this->load->view('plantilla/header-catalogos',$data);
-          $this->load->view('Vusuario.php');
-          $this->load->view('plantilla/footer');             
+                  
         break;
         case 3:
                        
         break;
+        case 4:
+            
+        break;   
         default:
                        
         break;
