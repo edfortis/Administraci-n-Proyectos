@@ -7,7 +7,7 @@ class Catalogos extends CI_Controller {
             parent::__construct();
             //mostrar
             $this->load->helper('cookie');
-            $this->load->library(array('form_validation','pagination'));
+            $this->load->library(array('form_validation','pagination','session'));
             $this->load->model('Modelo_admin');     
             
     }
@@ -41,9 +41,17 @@ class Catalogos extends CI_Controller {
        }
        else 
        {
-        $tabla = 1;    
+        if(null !==$this->session->flashdata('tabla')){
+           $tabla = $this->session->flashdata('tabla'); 
+        }else{
+            $tabla = 1;
+        }
+          
        }
        
+       
+
+
        switch ($tabla) 
        {
         case 1:
@@ -63,7 +71,20 @@ class Catalogos extends CI_Controller {
                                               
         break;
         case 2:
-                  
+
+           $vista = 'Licenciaturas';
+           $data["links"] = $this->paginacion($page,$vista);
+           $limit = $data['links']['per_page'];
+           $start = $elemt ;
+           $data["items"] = $this->Modelo_admin->fetch_data($limit,$start,$vista);
+           $data['tabla'] = $tabla;
+           
+           $data['title']=  ucfirst('Licenciatura');
+           
+           $this->load->view('plantilla/header-catalogos',$data);
+           $this->load->view('Vlicenciatura.php',$data);
+           $this->load->view('plantilla/footer');            
+
         break;
         case 3:
                        
@@ -87,7 +108,7 @@ class Catalogos extends CI_Controller {
             $total_row = $this->Modelo_admin->record_count($tabla);
             
             $config["total_rows"] = $total_row;
-            $config["per_page"] = 10;
+            $config["per_page"] = 100;
             $config['use_page_numbers'] = TRUE;
             $choice = round($config["total_rows"] / $config["per_page"]);
             $config['num_links'] = $choice; 
