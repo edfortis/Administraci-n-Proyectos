@@ -136,6 +136,7 @@
                     <option value="1" <?php if($tabla == 1){echo ' selected';}?> >Usuarios</option>
                     <option value="2" <?php if($tabla == 2){echo ' selected';}?> >Carreras</option>
                     <option value="3" <?php if($tabla == 3){echo ' selected';}?> >Materias</option>
+                    <option value="4" <?php if($tabla == 4){echo ' selected';}?> >Salones</option>
                 </select>  
               </div>
             <button type="submit" class="btn btn-default">Cargar</button>
