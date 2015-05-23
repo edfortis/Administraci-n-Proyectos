@@ -1,4 +1,6 @@
-
+<!--
+    Formaulario de la tabla salones 
+-->
 <div class="container margen">
     <div class="row">
         <div class="col-12-lg">

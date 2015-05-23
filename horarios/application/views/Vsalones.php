@@ -1,5 +1,5 @@
 <!--
-    Tabla de Usuarios
+    Vista de la tabla salones 
 -->
     <div class="row">
         <div class="col-lg-12">

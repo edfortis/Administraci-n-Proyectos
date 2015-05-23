@@ -1,3 +1,6 @@
+<!--
+    Controlador de la tabla salones 
+-->
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 

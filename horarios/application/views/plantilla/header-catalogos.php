@@ -1,3 +1,6 @@
+<!--
+    ya agregado apartado salones
+-->
 <!DOCTYPE html>
 <html lang="es">
 
