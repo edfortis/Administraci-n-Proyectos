@@ -69,7 +69,12 @@ class CUsuario extends CI_Controller {
             'perfil' => $this->input->post('perfil'));
             
         $this->Modelo_admin->set_data('Usuario',$data);
+<<<<<<< HEAD
         
+=======
+        //redireccionado de tabla
+       
+>>>>>>> c27509d0944f1c806a1366de6dc89d0b9c241c46
         redirect('catalogos');
           
     }

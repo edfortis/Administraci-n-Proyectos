@@ -89,8 +89,21 @@ class Catalogos extends CI_Controller {
         case 3:
                        
         break;
-        case 4:
-            
+         case 4:
+           $vista = 'Salones';
+           $data["links"] = $this->paginacion($page,$vista);
+           $limit = $data['links']['per_page'];
+           $start = $elemt ;
+           $data["items"] = $this->Modelo_admin->fetch_data($limit,$start,$vista);
+           $data['tabla'] = $tabla;
+           
+           $data['title']=  ucfirst('Salones');
+           
+           $this->load->view('plantilla/header-catalogos',$data);
+           $this->load->view('Vsalones.php',$data);
+           $this->load->view('plantilla/footer');
+                           
+                                              
         break;   
         default:
                        
