@@ -13,40 +13,43 @@ class CLicenciatura extends CI_Controller {
             
             
     }
-
+    
     public function index($id = FALSE)
     {
-           
+            
        if(!file_exists(APPPATH.'/views/form_licenciatura.php'))
        {
-          show_404();
+            show_404();
        }
        //validaciones
-       $this->form_validation->set_rules('nombre','nombre','required');
-       $this->form_validation->set_rules('creditosTotal','creditosTotal','required');
-       //$this->form_validation->set_rules('checkpass','Confirmacion Contraseña','required');
+       $this->form_validation->set_rules('nombres','Nombre','required');
+       $this->form_validation->set_rules('creditosTotales','Creditos Totales','required');
        
+        
        if($this->form_validation->run() == FALSE)
        {
            $data['title']=  ucfirst('Agregar Licenciatura');
            $this->load->view('plantilla/header',$data);
-
-           //if para modificar
-           if($id != false)
+           
+           //if para entrar a modificar
+           if($id != False)
            {
-                $tabla = array('tabla' => 'Licenciaturas','idcolum' => 'idLicenciatura','id' => $id);
-                $data = $this->Modelo_admin->get_row($tabla);
-
+               $tabla = array('tabla' => 'Licenciaturas',
+                'idcolum' => 'idLicenciatura',
+                'id' => $id);
+              $data = $this->Modelo_admin->get_row($tabla);
+              $data['title'] = ucfirst('Modificar licenciatura');
+             
            }
            $this->load->view('form_licenciatura.php',$data);
            $this->load->view('plantilla/footer');
        }else
        {
-        //if de modificacion
+           //if de modificacion
            if($id != False)
            {
                //Agregar
-               $this->modificar_licenciatura($id); 
+               $this->modificar_licenciatrua($id); 
                
            }
            else
@@ -54,10 +57,11 @@ class CLicenciatura extends CI_Controller {
                //modificar
                $this->agregar_licenciatura(); 
                
-           }  
-          
+           }
+           
+       } 
     }
-  }
+
     //agregar
     public function agregar_licenciatura()
     {
@@ -65,21 +69,20 @@ class CLicenciatura extends CI_Controller {
             'creditosTotal' => $this->input->post('creditosTotal'));
             
         $this->Modelo_admin->set_data('Licenciaturas',$data);
-        $array = array('tabla'=> 2);
-        $this->session->set_flashdata('tabla',2);
-        redirect('Catalogos');
+        //redireccionado de tabla
+        $array = array('tabla' => 2);
+        $this->session->set_falshdata('tabla',$array);
+        redirect('catalogos');
           
     }
-      //modificar
+    //modificar
     public function modificar_licenciatura($id = FALSE)
     {
         if($id == FALSE)
         {
-        $array = array('tabla'=> 2);
-        $this->session->set_flashdata('tabla',2);
-        redirect('Catalogos');
+            redirect('catalogos');
         }
-        var_dump($post);
+        
         $data = array('nombre' => $this->input->post('nombre'),
             'creditosTotal' => $this->input->post('creditosTotal'));
         $tabla = array(
@@ -87,12 +90,16 @@ class CLicenciatura extends CI_Controller {
             'id' => $id,
             'nombre' => 'Licenciaturas' 
         );
+        
         $this->Modelo_admin->entry_update($tabla,$data);
-        $array = array('tabla'=> 2);
-        $this->session->set_flashdata('tabla',2);
-        redirect('Catalogos'); 
+        
+        $array = array('tabla' => 2);
+        $this->session->set_falshdata('tabla',$array);
+        
+        redirect('catalogos');
         
     }
+      
     //eliminar
     public function eliminar_licenciatura($id = FALSE){
         if($id == FALSE)

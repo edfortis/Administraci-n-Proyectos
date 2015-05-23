@@ -23,13 +23,13 @@
     <!--estilo personalizado-->
     <link href="<?php echo base_url();?>css/estilo.css" rel="stylesheet">
     <!-- jQuery -->
-    
-    
     <link rel="stylesheet" href="<?php echo base_url();?>js/jquery-ui-1.11.4.custom/jquery-ui.smoth.css">
     <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
     <!--<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
     <script src="<?php echo base_url();?>js/jquery/jquery-1.11.3.min.js"></script>
     <script src="<?php echo base_url();?>js/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+    <!--modal box-->
+    <script src="<?php echo base_url();?>js/modalBox.js-master/modalBox-min.js"></script>
     
    
     <!-- Script para activar los tabs-->
@@ -75,6 +75,18 @@
            //draggable
            $('.draggable').draggable({revert:true,scope:"tasks"});
            
+           $('#usuario').on('click',function(){
+               
+                $(function() {
+                    $( "#dialog" ).dialog({
+                        modal: true
+                    });
+                }); 
+               
+           });
+           
+            
+           
           
           });
           
@@ -83,7 +95,22 @@
 </head>
 
 <body>
-
+   
+<div id="dialog" title="Usuario">
+  <?php 
+    //activar boton actualizar
+    
+    if($tabla == null){
+  ?>
+  
+  <a href="<?php echo base_url();?>CDocentes/" title="Actualizar"><button type="button" class="btn btn-info"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button></a>
+  
+  <?php
+    }
+  ?>
+  <a href="<?php echo base_url();?>login/salir" title="Cerrar Sesión"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></button></a>
+  
+</div>
     <!-- Navigation -->
     <nav class="navbar linea-gradada navbar-fixed-top" role="navigation">
         <div class="container">
@@ -100,15 +127,17 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    
                     <li>
-                        <a href="about.html">Catálogos</a>
+                        <a href="<?php echo base_url();?>sitio/cargar/inicio">Horarios</a>
                     </li>
                     <li>
-                        <a href="services.html">Services</a>
+                        <a href="<?php echo base_url();?>catalogos">Catálogos</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="#" title="Usuario" id="usuario" ><span class="glyphicon glyphicon-user"   style="font-size:16px;" aria-hidden="true"></span></a>
                     </li>
+                    <!-- dropdown ejemplo
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -129,40 +158,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="blog-home-1.html">Blog Home 1</a>
-                            </li>
-                            <li>
-                                <a href="blog-home-2.html">Blog Home 2</a>
-                            </li>
-                            <li>
-                                <a href="blog-post.html">Blog Post</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="full-width.html">Full Width Page</a>
-                            </li>
-                            <li>
-                                <a href="sidebar.html">Sidebar Page</a>
-                            </li>
-                            <li>
-                                <a href="faq.html">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="404.html">404</a>
-                            </li>
-                            <li>
-                                <a href="pricing.html">Pricing Table</a>
-                            </li>
-                        </ul>
-                    </li>
+                    -->
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
