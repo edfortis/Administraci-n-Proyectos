@@ -1,6 +1,6 @@
  <!-- Page Content -->
     <div class="container">
-
+         
         <!-- Marketing Icons Section -->
         
         <!-- /.row -->
@@ -14,8 +14,10 @@
                <div class="form-group label-uv">
                   <label for="carrera">Carrera</label>
                   <select class="form-control" name="carrera">
-                  <?php foreach ($items as $item){ ?>
-                    <option value="<?=$item->idLicenciatura?>"><?=$item->nombre?></option>     
+                  <?php foreach ($Licenciatura as $item){ ?>
+                      
+                    <option value="<?=$item->Licenciaturas_idLicenciatura?>"><?=$item->nombre?></option>     
+                  
                   <?php }?>
                   </select> 
                </div>
@@ -24,8 +26,8 @@
                  <div class="form-group label-uv">
                   <label for="carrera">Materia</label>
                   <select class="form-control" name="carrera">
-                  <?php foreach ($items as $item){ ?>
-                    <option value="<?=$item->idExperiencia?>"><?=$item->nombre?></option>     
+                  <?php foreach ($Experiencia as $item){ ?>
+                    <option value="<?=$item->Experiencias_idExperiencia?>"><?=$item->nombre?></option>     
                   <?php }?>
                   </select> 
                </div>    

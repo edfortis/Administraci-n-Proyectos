@@ -61,15 +61,34 @@
                   uis.push(ui);
                   ui.draggable.option({revert:false});
                   
+                  
               }
             });
             
             //btn-guardar
             $('#btn-guardar').on('click',function(){
-                
+              $.ajax({
+                  method: "POST",
+                  url: "set",
+                  data: {lista:horario }
+              }).done(function( msg ) {
+                    alert( "Data Saved: " + msg );
+              });
             });
             //btn-revert
-            
+            $('#btn-revert').on('click', function(){
+                
+                var ui = uis.pop();
+                
+                console.log(ui);
+                //console.log(ui.draggable.css("background","blue"));
+                //ui.draggable.css("background","blue");
+                
+                //console.log(ui.helper.position().left);
+               
+                
+                
+            });
             
             
            //draggable
@@ -96,14 +115,14 @@
 
 <body>
    
-<div id="dialog" title="Usuario">
+<div id="dialog" title="<?php echo ($tabla == null?  'Actualiza tu Perfil': 'Usuario');?>">
   <?php 
     //activar boton actualizar
-    
+   
     if($tabla == null){
   ?>
   
-  <a href="<?php echo base_url();?>CDocentes/" title="Actualizar"><button type="button" class="btn btn-info"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button></a>
+    <a href="<?php echo base_url();?>CDocentes/" title="Actualizar"><button type="button" class="btn btn-info"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button></a>
   
   <?php
     }
