@@ -87,6 +87,18 @@ class Catalogos extends CI_Controller {
 
         break;
         case 3:
+         $vista = 'ExperienciasVista';
+           $data["links"] = $this->paginacion($page,$vista);
+           $limit = $data['links']['per_page'];
+           $start = $elemt ;
+           $data["items"] = $this->Modelo_admin->fetch_data($limit,$start,$vista);
+           $data['tabla'] = $tabla;
+           
+           $data['title']=  ucfirst('Experiencia');
+           
+           $this->load->view('plantilla/header-catalogos',$data);
+           $this->load->view('Vexperiencia.php',$data);
+           $this->load->view('plantilla/footer');
                        
         break;
         case 4:
