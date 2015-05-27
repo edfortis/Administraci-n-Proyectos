@@ -38,22 +38,43 @@ class Login extends CI_Controller {
         );
          
         $query = $this->Modelo_admin->get_usuario($data);
+        var_dump($query);
         if($query != FALSE)
         {
             $datos = array('id' => $query[0]->idUsuario, 'nombre'=> $query[0]->nickname);
             $cookie = array(
                         'name'   => 'the_cookie',
-                        'value'  => $query[0]->nickname,
+                        'value'  => $query[0]->idUsuario,
                         'expire' =>  86500,
                         'secure' => false
             );
-            $this->input->set_cookie($cookie); 
+            $cookie2 = array(
+                'name' => 'the_cookie2',
+                'value' => $query[0]->perfil,
+                'expire' => 86500,
+                'secure' => false
+            );
+            $activado = array(
+                'name' => 'activado',
+                'value' => $query[0]->activado,
+                'expire' => 86500,
+                'secure' => false
+            ); 
+            $this->input->set_cookie($cookie);
+            $this->input->set_cookie($cookie2);
+            $this->input->set_cookie($activado);  
             redirect('sitio/cargar');  
         }
         else
         {
             redirect('login');
         }
+    }
+    
+    public function salir(){
+        delete_cookie('the_cookie');
+        delete_cookie('this_cookie2');
+        redirect('login');
     }
 }
 ?>

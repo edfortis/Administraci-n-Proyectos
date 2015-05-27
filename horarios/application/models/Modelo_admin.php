@@ -44,6 +44,10 @@ class Modelo_admin extends CI_Model {
         
         return $query->row_array();    
     }
+    public function get_items($tabla){
+        $query = $this->db->get_where($tabla['tabla'],array($tabla['idcolum'] => $tabla['id']));
+        return $query->result();
+    }
     
     public function get_item($id = FALSE,$tabla){
         if ($id === FALSE)
@@ -134,7 +138,7 @@ class Modelo_admin extends CI_Model {
     function get_usuario($data)
     {
        extract($data);
-       $this -> db -> select('idUsuario, nickname, contrasena');
+       $this -> db -> select('idUsuario, nickname, contrasena, perfil, activado');
        $this -> db -> from('Usuario');
        $this -> db -> where('nickname', $nickname);
        $this -> db -> where('contrasena',$pass);

@@ -1,3 +1,6 @@
+<!--
+    ya agregado apartado salones
+-->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -50,10 +53,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="<?php echo base_url();?>catalogos">Catálogos</a>
+                        <a href="<?php echo base_url();?>sitio/cargar/inicio">Horarios</a>
                     </li>
                     <li>
-                        <a href="services.html">Services</a>
+                        <a href="<?php echo base_url();?>catalogos">Catálogos</a>
                     </li>
                     <li>
                         <a href="contact.html">Contact</a>
@@ -136,6 +139,7 @@
                     <option value="1" <?php if($tabla == 1){echo ' selected';}?> >Usuarios</option>
                     <option value="2" <?php if($tabla == 2){echo ' selected';}?> >Carreras</option>
                     <option value="3" <?php if($tabla == 3){echo ' selected';}?> >Materias</option>
+                    <option value="4" <?php if($tabla == 4){echo ' selected';}?> >Salones</option>
                 </select>  
               </div>
             <button type="submit" class="btn btn-default">Cargar</button>

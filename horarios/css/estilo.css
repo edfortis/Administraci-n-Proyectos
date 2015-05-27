@@ -69,9 +69,23 @@
 	float:left;
 	z-index:1;
 }
+.navbar-right {
+    float: right !important;
+    margin-right: 15% !important;
+}
 
 .nav > li > a:focus, .nav > li > a:hover
 {
 	text-decoration: none;
 	background-color: #9DC4D7;
+}
+.ui-widget-header {
+    border: 1px solid #AAA !important;
+    background: url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") repeat-x scroll 50% 50% #09C !important;
+    color: #fff !important;
+    font-weight: bold;
+}
+#dialog{
+	display:none;
+	margin:0 0 0 35%;
 }
